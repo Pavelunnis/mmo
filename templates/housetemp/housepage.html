@@ -1,9 +1,22 @@
 {% extends "housetemp/base.html" %}
-{% block title %} Добро пожаловать на страницу по игре MMORPG Dynasty {% endblock title %}
-{% block header %} Объявления {% endblock header %}
+{% block title %} MMORPG Dynasty {% endblock title %}
+{% block header %} Добро пожаловать на страницу по игре MMORPG Dynasty {% endblock header %}
+
+
 {% block content %}
-    <p>.</p>
-    <p>Сведения</p>
-    <p>Сведения</p>
-    <p>Сведения</p>
+       <table>
+           <tr>
+               <td>Название</td>
+               <td>Текст</td>
+               <td>Категория</td>
+
+           </tr>
+           {% for Post in Posts %}
+           <tr>
+               <td>{{ Post.title_name }}</td>
+               <td>{{ Post.text_post }}</td>
+               <td>{{ Post.category }}</td>
+           </tr>
+           {% endfor %}
+       </table>
 {% endblock content %}

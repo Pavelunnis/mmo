@@ -1,0 +1,23 @@
+{% extends 'housetemp/base.html' %}
+
+{% block title %}Отклик к посту{% endblock %}
+
+{% block content%}
+
+{% if user.is_authenticated %}
+    <h1>Добавление</h1>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Добавить отклик</button>
+                </form>
+        </div>
+
+{% else %}
+
+    Пожалуйста зарегистрируйтесь на сайте чтобы добавить комментарий
+
+{% endif %}
+
+{% endblock %}

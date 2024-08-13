@@ -1,0 +1,21 @@
+{% extends 'housetemp/base.html' %}
+
+{% block title %}
+Информация по посту
+{% endblock title %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+        <tr>
+            <td>{{ Post.title_name }}</td>
+            <td>{{ Post.text_post }}</td>
+            <td>{{ Post.category }}</td>
+        </tr>
+</head>
+<body>
+{% endblock content %}
+</body>
+</html>
