@@ -32,6 +32,7 @@ class Post(models.Model):
         verbose_name = 'Объявление'
         verbose_name_plural = 'Объявления'
 
+
 class Comment(models.Model):
     commentPost = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -39,12 +40,9 @@ class Comment(models.Model):
     textPost = models.TextField()
     status = models.BooleanField(default=False)
 
-    class Meta:
-        verbose_name='Комментарий'
-        verbose_name_plural = 'Комментарии'
 
     def __str__(self):
-        return f'Пользователь {self.commentUser} прокомментировал: {self.textPost}'
+        return f'Пользователь {self.author} прокомментировал: {self.textPost}'
 
 
 

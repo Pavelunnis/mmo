@@ -1,15 +1,19 @@
-from allauth.account.forms import SignupForm
-from django.core.mail import send_mail
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
-class CustomSignupForm(SignupForm):
-    def save(self, request):
-        user = super().save(request)
-
-        send_mail(
-            subject='Добро пожаловать в наш интернет-магазин!',
-            message=f'{user.username}, вы успешно зарегистрировались!',
-            from_email=None,  # будет использовано значение DEFAULT_FROM_EMAIL
-            recipient_list=[user.email],
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = (
+            "username",
+            "email",
+            "password1",
+            "password2",
         )
-        return user
+
+
+class ConfirmationForm(forms.Form):
+    name = forms.CharField(max_length=128)
+    code = forms.IntegerField(min_value=10000, max_value=99999)

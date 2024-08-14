@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
-from .filters import PostFilter
+from .filters import PostFilter, PostCommentsFilter
 
 
 class PostList(ListView):
@@ -100,10 +100,9 @@ class UserResponseList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = Comment.objects.filter(commentPost__author=self.request.user).all()
         return queryset
-
     def get_queryset(self):
         queryset = Comment.objects.filter(commentPost__author=self.request.user).order_by('-time_in').all()
-        self.filterset = PostFilter(self.request.GET, queryset)
+        self.filterset = PostCommentsFilter(self.request.GET, queryset)
         self.filterset.form.fields['commentPost'].queryset = Post.objects.filter(author=self.request.user)
         return self.filterset.qs
 

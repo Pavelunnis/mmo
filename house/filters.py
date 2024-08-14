@@ -29,7 +29,6 @@ class PostFilter(FilterSet):
                                   widget=DateTimeInput(format="%Y-%m-%dT%H:%M",
                                                        attrs={"type": "datetime-local"}, ), )
 
-
     class Meta:
         model = Post
         fields = {

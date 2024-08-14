@@ -31,11 +31,11 @@ Response
                <td>
                     {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}
                     {% if comment.status == False %}
-                        <a href="{% url 'response_accept' comment.pk %}">Принять</a>
+                        <a href="{% url 'comment_accept' comment.pk %}">Принять</a>
                     {% else %}
                         <q>Принято</q>
                     {% endif %}
-                    <a href="{% url 'response_delete' comment.pk %}">Удалить</a>
+                    <a href="{% url 'comment_delete' comment.pk %}">Удалить</a>
                 </td>
            </tr>
            {% endfor %}

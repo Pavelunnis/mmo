@@ -40,10 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
     'house',
     'accounts',
 ]
@@ -138,11 +134,6 @@ MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
 
 LOGIN_REDIRECT_URL = "/posts"
 
@@ -156,7 +147,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
