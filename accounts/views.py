@@ -63,4 +63,4 @@ def confirm(request, code_id):
 def reset(request):
     obj = User.objects.filter(is_active=False)
     obj.delete()
-    return redirect('posts')
+    return redirect('/signup')
