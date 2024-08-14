@@ -1,4 +1,4 @@
-{% extends 'housetemp/base.html' %}
+{% extends 'flatpages/default.html' %}
 
 {% block title %}
 Информация по посту
@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <title>Post</title>
         <tr>
-            <td>{{ Post.title_name }}</td>
+            <td>{{ Post.title }}</td>
             <td>{{ Post.text_post }}</td>
             <td>{{ Post.category }}</td>
         </tr>

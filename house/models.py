@@ -16,29 +16,35 @@ class Post(models.Model):
            ('spellmaster', 'Мастера заклинаний'),
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title_name = models.CharField(max_length=128)
+    title = models.CharField(max_length=128)
     text_post = models.TextField()
     category = models.CharField(max_length=18, choices=CAT, default='tank')
     upload = models.FileField(upload_to="uploads/", null=True, blank=True)
+    time_in = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.title_name}'
+        return f'Объявление: {self.title}'
 
     def get_absolute_url(self):
-        return reverse('postdetail', args=[str(self.id)])
+        return reverse('postDetail', args=[str(self.id)])
 
+    class Meta:
+        verbose_name = 'Объявление'
+        verbose_name_plural = 'Объявления'
 
 class Comment(models.Model):
     commentPost = models.ForeignKey(Post, on_delete=models.CASCADE)
-    commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    time_in = models.DateTimeField(auto_now_add=True)
     textPost = models.TextField()
     status = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f'{self.textPost}'
+    class Meta:
+        verbose_name='Комментарий'
+        verbose_name_plural = 'Комментарии'
 
-    def get_absolute_url(self):
-        return reverse('Comment')
+    def __str__(self):
+        return f'Пользователь {self.commentUser} прокомментировал: {self.textPost}'
 
 
 
